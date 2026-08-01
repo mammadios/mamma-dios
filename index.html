@@ -614,7 +614,7 @@ function orderCard(o) {
     </div>
     <div class="cust-info">
       <strong>${o.customer_name}</strong>
-      <a href="sms:${o.phone_number}" style="color:var(--muted);font-size:.73rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-right:8px">💬 ${o.phone_number}</a><a href="tel:${o.phone_number}" style="color:var(--muted);font-size:.73rem;text-decoration:none">📞</a>
+      <a href="sms:${o.phone_number}&body=Your%20order%20is%20ready%20at%20Mamma%20Dio's%20Pizza%20%F0%9F%8D%95%20Come%20grab%20it%20while%20it's%20hot!" style="color:var(--muted);font-size:.73rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-right:8px">💬 ${o.phone_number}</a><a href="tel:${o.phone_number}" style="color:var(--muted);font-size:.73rem;text-decoration:none">📞</a>
     </div>
     <div class="oitems">
       ${(o.order_items||[]).map(i=>`<div class="oline"><span>${i.qty}× ${i.name}</span><span>${fmt(i.price*i.qty)}</span></div>`).join('')}
