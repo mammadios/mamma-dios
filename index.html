@@ -242,12 +242,7 @@
         <div class="field"><label>Phone Number</label><input id="o-phone" placeholder="(555) 000-0000" type="tel" /></div>
       </div>
       <div class="field" style="margin-top:12px"><label>Special Requests</label><textarea id="o-special" rows="2" placeholder="Allergies, substitutions..."></textarea></div>
-      <div style="margin-top:14px;display:flex;align-items:flex-start;gap:10px;background:#fff8e6;border:1.5px solid #f59e0b;border-radius:10px;padding:12px 14px">
-        <input type="checkbox" id="o-consent" style="width:18px;height:18px;margin-top:2px;flex-shrink:0;accent-color:#c0392b" />
-        <label for="o-consent" style="font-size:.83rem;color:#78350f;cursor:pointer;line-height:1.4">
-          By providing my phone number, I consent to receive up to two SMS notifications from Mamma Dio's Pizza per order — one when we start cooking, and one when my order is ready for pickup. Message &amp; data rates may apply. Reply STOP to opt out.
-        </label>
-      </div>
+      
     </div>
 
     <div class="card">
@@ -521,11 +516,9 @@ async function placeOrder() {
   const alertEl = document.getElementById('o-alert');
   alertEl.innerHTML = '';
 
-  const consent = document.getElementById('o-consent').checked;
   if (!name) return alertEl.innerHTML = '<div class="alert alert-err">Customer name required</div>';
   if (!phone) return alertEl.innerHTML = '<div class="alert alert-err">Phone number required</div>';
   if (!cart.length) return alertEl.innerHTML = '<div class="alert alert-err">Add at least one item</div>';
-  if (!consent) return alertEl.innerHTML = '<div class="alert alert-err">Customer must agree to receive SMS notification</div>';
   if (!SB) return alertEl.innerHTML = '<div class="alert alert-err">Not connected to Supabase — go to ⚙ Setup tab</div>';
 
   const btn = document.getElementById('o-btn');
@@ -559,7 +552,6 @@ async function placeOrder() {
   document.getElementById('o-name').value = '';
   document.getElementById('o-phone').value = '';
   document.getElementById('o-special').value = '';
-  document.getElementById('o-consent').checked = false;
   cart = []; renderCart();
   orders.unshift(data);
   renderBoard();
